@@ -94,9 +94,16 @@ class Profile extends StatelessWidget {
               ),
             ),
             Center(
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('Logout'),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                },
+                icon: Icon(Icons.logout),
+                label: Text('Logout'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
               ),
             ),
           ],
