@@ -2,101 +2,106 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Scaffold(
+    home: Profile()
+  ));
+}
+class Profile extends StatelessWidget {
+  const Profile ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
         title: Text('Book Tracker'),
-        backgroundColor: Colors.lightBlue[800],
+        backgroundColor: Colors.lightBlue,
       ),
-      body: Column(
-        children: [
-          // Name Row
-          Container(
-            margin: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0), // Padding inside the text widget
-                  child: Text(
-                    'Name:',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Centered "User Profile" title
+            Center(
+              child: Text(
+                'User Profile',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Padding inside the text widget
-                  child: Text(
-                    'Carla D. Ramos',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            SizedBox(height: 16),
 
-          // Age Row
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0), // Padding inside the text widget
-                  child: Text(
-                    'Age:',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Padding inside the text widget
-                  child: Text(
-                    '21 Years Old',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
+            // Centered Icon
+            Center(
+              child: Icon(
+                Icons.person,
+                size: 90,
+                color: Colors.lightBlue,
+              ),
             ),
-          ),
+            SizedBox(height: 24),
 
-          // Gender Row
-          Container(
-            margin: EdgeInsets.fromLTRB(5, 4, 3, 2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0), // Padding inside the text widget
-                  child: Text(
-                    'Gender:',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Padding inside the text widget
-                  child: Text(
-                    'Female',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
+            // Name
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Name:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Carla D. Ramos'),
+                ],
+              ),
             ),
-          ),
-        ],
+
+            // Email
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Email:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('22-12953@g.batstate-u.edu.ph'),
+                ],
+              ),
+            ),
+
+            // Company
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Company:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Batangas State University TNEU Balayan'),
+                ],
+              ),
+            ),
+
+            // Contact No.
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Contact No.:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('09655239512'),
+                ],
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text('Logout'),
+              ),
+            ),
+          ],
+        ),
       ),
-    ),
-  ));
+    );
+  }
 }
