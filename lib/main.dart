@@ -1,5 +1,44 @@
 import 'package:flutter/material.dart';
 
+// Book model without ratings
+class Book {
+  final String title;
+  final String author;
+
+  Book({
+    required this.title,
+    required this.author,
+  });
+}
+
+// List of books
+final List<Book> books = [
+  Book(
+    title: 'The Hunger Games (The Hunger Games, #1)',
+    author: 'Suzanne Collins',
+  ),
+  Book(
+    title: 'Pride and Prejudice',
+    author: 'Jane Austen',
+  ),
+  Book(
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+  ),
+  Book(
+    title: 'Harry Potter and the Order of the Phoenix (Harry Potter, #5)',
+    author: 'J.K. Rowling',
+  ),
+  Book(
+    title: 'The Book Thief',
+    author: 'Markus Zusak',
+  ),
+  Book(
+    title: 'Twilight (The Twilight Saga, #1)',
+    author: 'Stephenie Meyer',
+  ),
+];
+
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
@@ -7,95 +46,22 @@ void main() {
         title: Text('Book Tracker'),
         backgroundColor: Colors.lightBlue[800],
       ),
-      body: Column(
-        children: [
-          // Name Row
-          Container(
-            margin: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0), // Padding inside the text widget
-                  child: Text(
-                    'Name:',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Padding inside the text widget
-                  child: Text(
-                    'Carla D. Ramos',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
+      body: ListView.builder(
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          final book = books[index];
+          return Card(
+            margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            child: ListTile(
+              leading: CircleAvatar(
+                child: Text('${index + 1}'),
+                backgroundColor: Colors.lightBlue[200],
+              ),
+              title: Text(book.title, style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('by ${book.author}'),
             ),
-          ),
-
-          // Age Row
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0), // Padding inside the text widget
-                  child: Text(
-                    'Age:',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Padding inside the text widget
-                  child: Text(
-                    '21 Years Old',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // Gender Row
-          Container(
-            margin: EdgeInsets.fromLTRB(5, 4, 3, 2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0), // Padding inside the text widget
-                  child: Text(
-                    'Gender:',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Padding inside the text widget
-                  child: Text(
-                    'Female',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+          );
+        },
       ),
     ),
   ));
