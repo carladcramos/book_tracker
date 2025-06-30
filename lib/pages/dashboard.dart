@@ -69,7 +69,7 @@ class Dashboard extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                      child: Text('Xyronn Cahayon'),
+                      child: Text('Carla Ramos'),
                     ),
                   ],
                 ),
@@ -92,7 +92,7 @@ class Dashboard extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                      child: Text('xyronncahayon28@gmail.com'),
+                      child: Text('carladcramos@gmail.com'),
                     ),
                   ],
                 ),
