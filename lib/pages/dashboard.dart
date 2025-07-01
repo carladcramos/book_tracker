@@ -1,169 +1,92 @@
 import 'package:flutter/material.dart';
+import 'AddBook.dart';
+import 'Books.dart';
+import 'ItemCard.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard ({super.key});
+class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
 
-  void _showUnderConstruction(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Notice"),
-        content: const Text("Logout is under construction."),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("OK"),
-          ),
-        ],
-      ),
-    );
-  }
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  List<Books> books = [
+    Books(title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', genre: 'Classic', rating: 4.5, progress: '50%'),
+    Books(title: '1984', author: 'George Orwell', genre: 'Dystopian', rating: 4.0, progress: '75%'),
+    Books(title: 'To Kill a Mockingbird', author: 'Harper Lee', genre: 'Southern Gothic', rating: 4.7, progress: '60%'),
+    Books(title: 'The Catcher in the Rye', author: 'J.D. Salinger', genre: 'Coming-of-age', rating: 4.2, progress: '80%'),
+    Books(title: 'The Lord of the Rings', author: 'J.R.R. Tolkien', genre: 'Fantasy', rating: 4.8, progress: '90%'),
+  ];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         title: const Text(
-          'Profile',
-          style: TextStyle(color: Colors.white),
+          'Book Tracker',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue[700],
+        elevation: 0,
+        centerTitle: true,
       ),
-      body: Container(
-        margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-        child: Column(
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'User Profile',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-              ],
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.person, size: 80),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(30, 20, 0, 0),
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Name:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Times New Roman',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Row(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddBook()),
+          );
+        },
+        backgroundColor: Colors.blue[700],
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
+      ),
+      
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: books.isEmpty
+            ? const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                      child: Text('Carla Ramos'),
+                    Icon(
+                      Icons.book_outlined,
+                      size: 80,
+                      color: Colors.grey,
                     ),
-                  ],
-                ),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(30, 10, 0, 0),
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Email:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Times New Roman',
-                        ),
+                    SizedBox(height: 16),
+                    Text(
+                      'No books yet',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
-                  ),
-                ),
-                const Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                      child: Text('carladcramos@gmail.com'),
                     ),
-                  ],
-                ),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(30, 10, 0, 0),
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Company:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Times New Roman',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                      child: Text('None'),
-                    ),
-                  ],
-                ),
-                const Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
-                      child: Text(
-                        'Contact Number:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Times New Roman',
-                        ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Tap the + button to add your first book',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
                       ),
                     ),
                   ],
                 ),
-                const Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                      child: Text('None'),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 250, 0, 0),
-                      width: 300,
-                      child: ElevatedButton(
-                        onPressed: () => _showUnderConstruction(context),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                        ),
-                        child: const Text(
-                          'Logout',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
+              )
+            : ListView.separated(
+                itemCount: books.length,
+                separatorBuilder: (context, index) => const SizedBox(height: 12),
+                itemBuilder: (context, index) {
+                  return ItemCard(books: books[index]);
+                },
+              ),
       ),
     );
   }

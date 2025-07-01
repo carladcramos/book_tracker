@@ -1,8 +1,12 @@
-import 'package:book_tracker/pages/ListItems.dart';
+import 'package:book_tracker/pages/AddBook.dart';
 import 'package:flutter/material.dart';
+import 'package:book_tracker/pages/dashboard.dart';
 
 void main() {
-  runApp(const MaterialApp(
-      home: ListItems()
+  runApp(MaterialApp(
+    home: const Dashboard(),
+    routes: {
+      '/add': (context) => const AddBook(),
+    },
   ));
 }

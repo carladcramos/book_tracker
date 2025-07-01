@@ -2,7 +2,7 @@ class Books{
   String title;
   String author;
   String genre;
-  String rating;
+  double rating;
   String progress;
 
   Books({
