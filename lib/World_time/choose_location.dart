@@ -10,16 +10,7 @@ class ChooseLocation extends StatefulWidget {
 class _ChooseLocationState extends State<ChooseLocation> {
   
   Future<void> getData() async {
-    //simulating a network request for a username
-    String username = await Future.delayed(const Duration(seconds: 2), () {
-      return 'yoshi';
-    });
-    //simulating a network request to get bio of the username
-    String bio = await Future.delayed(const Duration(seconds: 2), () { 
-      return 'statement';
-    }); 
-
-    print('${username} ${bio}');
+    
   }
 
 
